@@ -1,0 +1,47 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+      border-collapse: collapse;
+        width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+      text-align: left;
+        padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+% from itertools import compress
+% from config import assessment_dict, assessment_folder_dict
+% from assessments import drops, percentage
+
+<h1>Scoreboard for game {{key}}</h1>
+<table>
+  <tr>
+    <th>item number</th>
+    <th>submit id</th>
+    <th>onyen</th>
+    <th>score</th>
+    <th>msg</th>
+    <th>points total</th>
+    <th>elapsed time</th>
+  </tr>  
+  % for index, row in enumerate(game_assessments):
+     <tr>
+       <th>{{index+1}}</th>
+       <th>{{row.id}}</th>
+       <th>{{row.onyen}}</th>
+       <th>{{row.score}}</th>
+       <th>{{row.msg}}</th>
+       <th>{{row.points_total}}</th>
+       <th>{{row.elapsed_time}}</th>
+     </tr>
+  % end
+</table>
+
+% rebase('assessment.base')
