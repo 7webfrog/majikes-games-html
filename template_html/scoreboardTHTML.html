@@ -165,101 +165,36 @@
     }
 </style>
     
-<head>
-    <title>Example Podium Screen</title>
-
-</head>
-<body>
-    <div>
-    <h1><strong>Algorithm Games</strong></h1> 
+<h1>Scoreboard for game {{key}}</h1>
+<div class="flex hstack">
+  % for gameNum in range(4):
+  <div class="flex vstack">
+    <div class="card">
+      <div class="container">
+        <h4><strong>Game {{gameNum + 1}}</strong></h4> 
+        <table>
+          <tr>
+            <th colspan="2"><strong>Fastest</strong></th>
+          </tr>
+          % for index in range(podiumSize):
+            % if index >= len(game_assessments):
+            % break
+            % end
+            %row = game_assessments[index]
+            <tr>
+              <td>{{row.onyen}}</td>
+              <td>{{row.elapsed_time}}</td>
+            </tr>
+          % end
+          % for _ in range(podiumSize - index):
+            <tr>
+              <td>N/A</td>
+              <td>--:--:--:----</td>
+            </tr>
+          % end
+        </table>
+      </div>
     </div>
-    
-    <div class="flex hstack">
-    % for i in range(4):
-    <div class="flex vstack">
-        <div class="card">
-        <div class="container">
-            <h4><strong>Game 1</strong></h4> 
-            <table>
-            <tr>
-                <th colspan="2"><strong>Fastest</strong></th>
-            </tr>
-            <tr>
-                <td>Captain America</td>
-                <td>00:10.25</td>
-            </tr>
-            <tr>
-                <td>Thor</td>
-                <td>00:12.57</td>
-            </tr>
-            <tr>
-                <td>Hulk</td>
-                <td>00:12:97</td>
-            </tr>
-            <tr>
-                <td>Iron Man</td>
-                <td>00:15.97</td>
-            </tr>
-            <tr>
-                <td>Batman</td>
-                <td>00:20.78</td>
-            </tr>
-            </table>
-            <table>
-            <tr>
-                <th colspan="2"><strong>Most Efficient</strong></th>
-            </tr>
-            <tr>
-                <td>Captain America</td>
-                <td>00:10.25</td>
-            </tr>
-            <tr>
-                <td>Thor</td>
-                <td>00:12.57</td>
-            </tr>
-            <tr>
-                <td>Hulk</td>
-                <td>00:12:97</td>
-            </tr>
-            <tr>
-                <td>Iron Man</td>
-                <td>00:15.97</td>
-            </tr>
-            <tr>
-                <td>Batman</td>
-                <td>00:20.78</td>
-            </tr>
-            </table>
-            <table>
-            <tr>
-                <th colspan="2"><strong>Shortest</strong></th>
-            </tr>
-            <tr>
-                <td>Captain America</td>
-                <td>00:10.25</td>
-            </tr>
-            <tr>
-                <td>Thor</td>
-                <td>00:12.57</td>
-            </tr>
-            <tr>
-                <td>Hulk</td>
-                <td>00:12:97</td>
-            </tr>
-            <tr>
-                <td>Iron Man</td>
-                <td>00:15.97</td>
-            </tr>
-            <tr>
-                <td>Batman</td>
-                <td>00:20.78</td>
-            </tr>
-            </table>
-        </div>
-        </div> 
-    </div>
-    %end
-            
-% rebase('assessment.base')
-    
-    
+  </div>
+  % end
+</div>
